@@ -12,10 +12,12 @@ namespace Quads.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
+        private TaskContext TaskContext { get; set; }
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(ILogger<HomeController> logger, TaskContext task)
         {
             _logger = logger;
+            TaskContext = task;
         }
 
         public IActionResult Index()
@@ -32,7 +34,7 @@ namespace Quads.Controllers
         }
         //submit new movie
         [HttpPost]
-        public IActionResult AddTask(Task task)
+        public IActionResult AddTask(Models.Task task)
         {
             //context.Add(task);
             //context.SaveChanges();
@@ -46,7 +48,7 @@ namespace Quads.Controllers
         [HttpGet]
         public IActionResult Edit(int TaskID)
         {
-            Task task = context.Task.Single(x => x.TaskID == TaskID);
+            Models.Task task = TaskContext.Tasks.Single(x => x.TaskID == TaskID);
             //ViewBag.Categories = context.Categories.ToList();
 
             return View("AddEditTask", task);
@@ -54,10 +56,10 @@ namespace Quads.Controllers
 
         //Submitting the edited movie
         [HttpPost]
-        public IActionResult Edit(Task updatedTask)
+        public IActionResult Edit(Models.Task updatedTask)
         {
-            context.Update(updatedTask);
-            context.SaveChanges();
+            TaskContext.Update(updatedTask);
+            TaskContext.SaveChanges();
 
             return RedirectToAction("Quad");
         }
