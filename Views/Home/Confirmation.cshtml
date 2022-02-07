@@ -1,0 +1,64 @@
+﻿
+@{
+
+
+}
+
+@model Quads.Models.Task
+
+<div class="container">
+    <h1>Are you sure you want to delete this task?</h1>
+    <div class="d-flex justify-content-center">
+
+
+        <form class="text-center w-50" method="post">
+            <input type="hidden" asp-for="TaskID" />
+
+            <label asp-for="TaskName">Task Name</label>
+            <input class="form-control" asp-for="TaskName" disabled />
+            <br />
+
+            <label asp-for="CategoryID">Category</label>
+            <select class="form-control" asp-for="CategoryID" disabled>
+                @foreach (Category category in ViewBag.Categories)
+                {
+                    <option value="@category.CategoryID">
+                        @category.CategoryName
+                    </option>
+                }
+
+
+            </select>
+            <br />
+
+            <label asp-for="DueDate">Due Date</label>
+            <input class="form-control" type="date" asp-for="DueDate" disabled />
+            <br />
+
+
+            <label asp-for="IsUrgent">Urgent</label>
+            <input class="form-control" type="checkbox" asp-for="IsUrgent" disabled/>
+            <br />
+
+            <label asp-for="IsImportant">Important</label>
+            <input class="form-control" type="checkbox" asp-for="IsImportant" disabled />
+            <br />
+
+            <label asp-for="IsCompleted">Completed</label>
+            <input class="form-control" type="checkbox" asp-for="IsCompleted" disabled/>
+            <br />
+
+
+            <input class="form-control" type="submit" value="Delete"/>
+
+        
+        </form>
+    </div>
+
+</div>
+
+@section scripts{
+
+    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+}

@@ -78,8 +78,24 @@ namespace Quads.Controllers
 
         }
 
+        [HttpGet]
+        public IActionResult Delete(int TaskID)
+        {
+            Models.Task task = TaskContext.Tasks.Single(x => x.TaskID == TaskID);
+            ViewBag.Categories = TaskContext.Categories.ToList();
 
+            return View("Confirmation", task);
+        }
 
+        [HttpPost]
+        public IActionResult Delete(Models.Task task)
+        {
+            TaskContext.Tasks.Remove(task);
+            TaskContext.SaveChanges();
+
+            var taskList = TaskContext.Tasks.ToList();
+            return View("index", taskList);
+        }
 
         public IActionResult Privacy()
         {
