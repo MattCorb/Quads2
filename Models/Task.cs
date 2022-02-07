@@ -13,7 +13,7 @@ namespace Quads.Models
         public int TaskID { get; set; }
         [Required]
         public string TaskName { get; set; }
-        public DateTime DueDate { get; set; }
+        public string DueDate { get; set; }
         [Required]
         public bool IsUrgent { get; set; }
         [Required]
