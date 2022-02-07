@@ -29,6 +29,7 @@ namespace Quads.Controllers
         [HttpGet]
         public IActionResult AddTask()
         {
+            ViewBag.Categories = TaskContext.Categories.ToList();
             //ViewBag.Categories = context.Categories.ToList();
             return View("AddEditTask");
         }
@@ -36,9 +37,9 @@ namespace Quads.Controllers
         [HttpPost]
         public IActionResult AddTask(Models.Task task)
         {
-            //context.Add(task);
-            //context.SaveChanges();
-            return RedirectToAction("Quad");
+           TaskContext.Add(task);
+           TaskContext.SaveChanges();
+            return RedirectToAction("Index");
         }
 
 
@@ -49,7 +50,7 @@ namespace Quads.Controllers
         public IActionResult Edit(int TaskID)
         {
             Models.Task task = TaskContext.Tasks.Single(x => x.TaskID == TaskID);
-            //ViewBag.Categories = context.Categories.ToList();
+            ViewBag.Categories = TaskContext.Categories.ToList();
 
             return View("AddEditTask", task);
         }
@@ -58,10 +59,21 @@ namespace Quads.Controllers
         [HttpPost]
         public IActionResult Edit(Models.Task updatedTask)
         {
+            if (ModelState.IsValid) 
+            { 
             TaskContext.Update(updatedTask);
             TaskContext.SaveChanges();
 
-            return RedirectToAction("Quad");
+            return RedirectToAction("Index");
+
+             }
+
+            else
+            {
+                ViewBag.Categories = TaskContext.Categories.ToList();
+                return View("AddEditTask");
+            }
+
         }
 
 
