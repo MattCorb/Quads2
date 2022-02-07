@@ -1,0 +1,59 @@
+﻿
+@{
+}
+
+@model Task
+<div class="container">
+    <h1>Add or Edit a Task!!</h1>
+    <div class="d-flex justify-content-center">
+
+
+        <form class="text-center w-50" method="post">
+            <label asp-for="TaskName">Task Name</label>
+            <input class="form-control" asp-for="TaskName" />
+            <br />
+
+            <label asp-for="CategoryID">Category</label>
+            <select class="form-control" asp-for="categoryID">
+                @foreach (Category category in ViewBag.Category)
+                {
+                    <option value="@category.CategoryID">
+                        @category.CategoryName
+                    </option>
+                }
+
+
+            </select>
+            <br />
+
+            <label asp-for="DueDate">Due Date</label>
+            <input class="form-control" type="number" asp-for="DueDate" />
+            <br />
+
+
+            <label asp-for="IsUrgent">Urgent</label>
+            <input class="form-control" type="checkbox" asp-for="IsUrgent" />
+            <br />
+
+            <label asp-for="IsImportant">Important</label>
+            <input class="form-control" type="checkbox" asp-for="IsImportant" />
+            <br />
+
+            <label asp-for="IsCompleted">Completed</label>
+            <input class="form-control" type="checkbox" asp-for="IsCompleted" />
+            <br />
+
+
+            <input class="form-control" type="submit" value="Submit!" />
+
+            <div asp-validation-summary="All"></div>
+        </form>
+    </div>
+
+</div>
+
+@section scripts{
+
+    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+}
