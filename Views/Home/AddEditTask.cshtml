@@ -16,7 +16,7 @@
 
             <label asp-for="CategoryID">Category</label>
             <select class="form-control" asp-for="CategoryID">
-                @foreach (Category category in ViewBag.Category)
+                @foreach (Category category in ViewBag.Categories)
                 {
                     <option value="@category.CategoryID">
                         @category.CategoryName
@@ -28,7 +28,7 @@
             <br />
 
             <label asp-for="DueDate">Due Date</label>
-            <input class="form-control" type="number" asp-for="DueDate" />
+            <input class="form-control" type="date" asp-for="DueDate" />
             <br />
 
 
