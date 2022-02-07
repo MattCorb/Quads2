@@ -20,9 +20,11 @@ namespace Quads.Controllers
             TaskContext = task;
         }
 
+        [HttpGet]
         public IActionResult Index()
         {
-            return View();
+            var taskList = TaskContext.Tasks.ToList();
+            return View(taskList);
         }
 
         // New task stuff
