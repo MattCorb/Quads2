@@ -54,17 +54,30 @@
 
                     @foreach (var taskInstance in Model)
                     {
-                        if (taskInstance.IsImportant == true & taskInstance.IsUrgent == true)
+                        if (taskInstance.IsImportant == true & taskInstance.IsUrgent == true & taskInstance.IsCompleted == false)
                         {
                         <tr>
                             @if (taskInstance.IsCompleted == true)
                             {
-                                <td><span>&#10003;</span></td>
+                                <td>
+                                    <center>
+                                        <a asp-controller="Home" asp-action="ChangeTaskDoneState" asp-route-taskid="@taskInstance.TaskID">
+                                            <span>&#9989;</span>
+                                        </a>
+                                    </center>
+                                </td>
 
                             }
                             else
                             {
-                                <td></td>
+                                <td>
+                                    <center>
+                                        <a asp-controller="Home" asp-action="ChangeTaskDoneState" asp-route-taskid="@taskInstance.TaskID">
+                                            <span>&#9744;</span>
+                                        </a>
+                                    </center>
+
+                                </td>
                             }
                             <td>@taskInstance.TaskName</td>
                             <td>
@@ -101,27 +114,40 @@
 
                     @foreach (var taskInstance in Model)
                     {
-                        if (taskInstance.IsImportant == true & taskInstance.IsUrgent == false)
+                        if (taskInstance.IsImportant == true & taskInstance.IsUrgent == false & taskInstance.IsCompleted == false)
                         {
-                            <tr>
-                                @if (taskInstance.IsCompleted == true)
-                                {
-                                    <td><span>&#10003;</span></td>
-
-                                }
-                                else
-                                {
-                                    <td></td>
-                                }
-                                <td>@taskInstance.TaskName</td>
+                        <tr>
+                            @if (taskInstance.IsCompleted == true)
+                            {
                                 <td>
-                                    <a class="button" style="background-color:orange; padding:4px 0px 4px 0px" asp-controller="Home" asp-action="Edit" asp-route-taskid="@taskInstance.TaskID">Edit</a>
+                                    <center>
+                                        <a asp-controller="Home" asp-action="ChangeTaskDoneState" asp-route-taskid="@taskInstance.TaskID">
+                                            <span>&#9989;</span>
+                                        </a>
+                                    </center>
                                 </td>
+
+                            }
+                            else
+                            {
                                 <td>
-                                    <a class="button" style="background-color: red; padding: 4px 0px 4px 0px" asp-controller="Home" asp-action="Delete" asp-route-taskid="@taskInstance.TaskID">Delete</a>
+                                    <center>
+                                        <a asp-controller="Home" asp-action="ChangeTaskDoneState" asp-route-taskid="@taskInstance.TaskID">
+                                            <span>&#9744;</span>
+                                        </a>
+                                    </center>
 
                                 </td>
-                            </tr>
+                            }
+                            <td>@taskInstance.TaskName</td>
+                            <td>
+                                <a class="button" style="background-color:orange; padding:4px 0px 4px 0px" asp-controller="Home" asp-action="Edit" asp-route-taskid="@taskInstance.TaskID">Edit</a>
+                            </td>
+                            <td>
+                                <a class="button" style="background-color: red; padding: 4px 0px 4px 0px" asp-controller="Home" asp-action="Delete" asp-route-taskid="@taskInstance.TaskID">Delete</a>
+
+                            </td>
+                        </tr>
                         }
                     }
                 </table>
@@ -153,27 +179,40 @@
 
                     @foreach (var taskInstance in Model)
                     {
-                        if (taskInstance.IsImportant == false & taskInstance.IsUrgent == true)
+                        if (taskInstance.IsImportant == false & taskInstance.IsUrgent == true & taskInstance.IsCompleted == false)
                         {
-                            <tr>
-                                @if (taskInstance.IsCompleted == true)
-                                {
-                                    <td><span>&#10003;</span></td>
-
-                                }
-                                else
-                                {
-                                    <td></td>
-                                }
-                                <td>@taskInstance.TaskName</td>
+                        <tr>
+                            @if (taskInstance.IsCompleted == true)
+                            {
                                 <td>
-                                    <a class="button" style="background-color:orange; padding:4px 0px 4px 0px" asp-controller="Home" asp-action="Edit" asp-route-taskid="@taskInstance.TaskID">Edit</a>
+                                    <center>
+                                        <a asp-controller="Home" asp-action="ChangeTaskDoneState" asp-route-taskid="@taskInstance.TaskID">
+                                            <span>&#9989;</span>
+                                        </a>
+                                    </center>
                                 </td>
+
+                            }
+                            else
+                            {
                                 <td>
-                                    <a class="button" style="background-color: red; padding: 4px 0px 4px 0px" asp-controller="Home" asp-action="Delete" asp-route-taskid="@taskInstance.TaskID">Delete</a>
+                                    <center>
+                                        <a asp-controller="Home" asp-action="ChangeTaskDoneState" asp-route-taskid="@taskInstance.TaskID">
+                                            <span>&#9744;</span>
+                                        </a>
+                                    </center>
 
                                 </td>
-                            </tr>
+                            }
+                            <td>@taskInstance.TaskName</td>
+                            <td>
+                                <a class="button" style="background-color:orange; padding:4px 0px 4px 0px" asp-controller="Home" asp-action="Edit" asp-route-taskid="@taskInstance.TaskID">Edit</a>
+                            </td>
+                            <td>
+                                <a class="button" style="background-color: red; padding: 4px 0px 4px 0px" asp-controller="Home" asp-action="Delete" asp-route-taskid="@taskInstance.TaskID">Delete</a>
+
+                            </td>
+                        </tr>
                         }
                     }
                 </table>
@@ -193,27 +232,40 @@
 
                     @foreach (var taskInstance in Model)
                     {
-                        if (taskInstance.IsImportant == false & taskInstance.IsUrgent == false)
+                        if (taskInstance.IsImportant == false & taskInstance.IsUrgent == false & taskInstance.IsCompleted == false)
                         {
-                            <tr>
-                                @if (taskInstance.IsCompleted == true)
-                                {
-                                    <td><span>&#10003;</span></td>
+                <tr>
+                    @if (taskInstance.IsCompleted == true)
+                    {
+                        <td>
+                            <center>
+                                <a asp-controller="Home" asp-action="ChangeTaskDoneState" asp-route-taskid="@taskInstance.TaskID">
+                                    <span>&#9989;</span>
+                                </a>
+                            </center>
+                        </td>
 
-                                }
-                                else
-                                {
-                                    <td></td>
-                                }
-                                <td>@taskInstance.TaskName</td>
-                                <td>
-                                    <a class="button" style="background-color:orange; padding:4px 0px 4px 0px" asp-controller="Home" asp-action="Edit" asp-route-taskid="@taskInstance.TaskID">Edit</a>
-                                </td>
-                                <td>
-                                    <a class="button" style="background-color: red; padding: 4px 0px 4px 0px" asp-controller="Home" asp-action="Delete" asp-route-taskid="@taskInstance.TaskID">Delete</a>
+                    }
+                    else
+                    {
+                    <td>
+                        <center>
+                            <a asp-controller="Home" asp-action="ChangeTaskDoneState" asp-route-taskid="@taskInstance.TaskID">
+                                <span>&#9744;</span>
+                            </a>
+                        </center>
 
-                                </td>
-                            </tr>
+                    </td>
+                    }
+                    <td>@taskInstance.TaskName</td>
+                    <td>
+                        <a class="button" style="background-color:orange; padding:4px 0px 4px 0px" asp-controller="Home" asp-action="Edit" asp-route-taskid="@taskInstance.TaskID">Edit</a>
+                    </td>
+                    <td>
+                        <a class="button" style="background-color: red; padding: 4px 0px 4px 0px" asp-controller="Home" asp-action="Delete" asp-route-taskid="@taskInstance.TaskID">Delete</a>
+
+                    </td>
+                </tr>
                         }
                     }
                 </table>

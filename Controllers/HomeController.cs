@@ -27,6 +27,15 @@ namespace Quads.Controllers
             return View(taskList);
         }
 
+
+        [HttpGet]
+        public IActionResult ListAllTasks()
+        {
+            var taskList = TaskContext.Tasks.ToList();
+            return View(taskList);
+        }
+
+
         // New task stuff
         [HttpGet]
         public IActionResult AddTask()
@@ -75,6 +84,34 @@ namespace Quads.Controllers
                 ViewBag.Categories = TaskContext.Categories.ToList();
                 return View("AddEditTask");
             }
+
+        }
+
+        [HttpGet]
+        public IActionResult ChangeTaskDoneState(int TaskID)
+        {
+            Models.Task task = TaskContext.Tasks.Single(x => x.TaskID == TaskID);
+            task.IsCompleted =  !(task.IsCompleted);
+            TaskContext.Update(task);
+            TaskContext.SaveChanges();
+
+            var taskList = TaskContext.Tasks.ToList();
+
+
+            return View("Index", taskList);
+        }
+
+        public IActionResult ChangeTaskDoneStateListAll(int TaskID)
+        {
+            Models.Task task = TaskContext.Tasks.Single(x => x.TaskID == TaskID);
+            task.IsCompleted = !(task.IsCompleted);
+            TaskContext.Update(task);
+            TaskContext.SaveChanges();
+
+            var taskList = TaskContext.Tasks.ToList();
+
+
+            return View("ListAllTasks", taskList);
 
         }
 
