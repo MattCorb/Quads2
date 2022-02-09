@@ -9,9 +9,9 @@
 </head>
 <body>
     <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm  border-bottom box-shadow mb-3 text-white" ">
             <div class="container">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Quads</a>
+                <a class="navbar-brand text-white" style="font-size: 60px; asp-area="" asp-controller="Home" asp-action="Index">Quads</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -19,29 +19,73 @@
                 <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
                     <ul class="navbar-nav flex-grow-1">
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                            <a class="nav-link text-white-50 text-lg-center text-lg-left" style="font-size:40px;" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="AddTask">Add Task</a>
+                            <a class="nav-link text-white-50 text-lg-center text-lg-left" style="font-size:40px;"asp-area="" asp-controller="Home" asp-action="AddTask">Add Task</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="ListAllTasks">View All Tasks</a>
+                            <a class="nav-link text-white-50 text-lg-center text-lg-left" style="font-size:40px;"asp-area="" asp-controller="Home" asp-action="ListAllTasks">View All Tasks</a>
                         </li>
                     </ul>
                 </div>
             </div>
         </nav>
+
+        <!-- This div is  intentionally blank. It creates the transparent black overlay over the video which you can modify in the CSS -->
+        <div class="overlay"></div>
+
+        <!-- The HTML5 video element that will create the background video on the header -->
+        <video playsinline="playsinline" autoplay="autoplay" muted="muted" loop="loop">
+            <source src="https://storage.googleapis.com/coverr-main/mp4/Mt_Baker.mp4" type="video/mp4">
+        </video>
+
+        <!-- The header content -->
+        <div class="container h-100">
+            <div class="d-flex h-100 text-center align-items-center">
+                <div class="w-100 text-white">
+                    <h1 class="display-3 text-capitalize">Welcome to your new life</h1>
+                    <p class="lead mb-0">New Techniques Developed by Stephen Covey</p>
+                </div>
+            </div>
+        </div>
     </header>
-    <div class="container">
+
+    <div class="container d-flex justify-content-center flex-column">
+        
         <main role="main" class="pb-3">
             @RenderBody()
         </main>
     </div>
 
-    <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2022 - Quads - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+    <footer id="colophon" class="site-footer" role="contentinfo">
+        <div class="social-wrapper">
+            <ul>
+                <li>
+                    <a href="https://twitter.com/btaylorwilliams" target="_blank">
+                        <img src="https://cdn1.iconfinder.com/data/icons/logotypes/32/twitter-128.png" alt="Twitter Logo" class="twitter-icon">
+                    </a>
+                </li>
+                <li>
+                    <a href="https://www.instagram.com/matt_corb/" target="_blank">
+                        <img src="https://www.mchenryvillage.com/images/instagram-icon.png" alt="Instagram Logo" class="instagram-icon">
+                    </a>
+                </li>
+
+                <li>
+                    <a href="https://www.facebook.com/spencer.harrison.3304" target="_blank">
+                        <img src="http://www.iconarchive.com/download/i54037/danleech/simple/facebook.ico" alt="Facebook Logo" class="facebook-icon">
+                    </a>
+                </li>
+            </ul>
         </div>
+
+        <nav class="footer-nav" role="navigation">
+            <p>
+                Copyright &copy; 2022
+                Brennan Williams, Stetson Kent, Spencer Harrison, Matt Corbett
+            </p>
+        </nav>
     </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
